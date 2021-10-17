@@ -1,0 +1,23 @@
+{
+  "name": "inr-words",
+  "version": "1.0.0",
+  "description": "Convert Indian currency from numbers to words",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nidri/inr-words.git"
+  },
+  "keywords": [
+    "inr",
+    "currency"
+  ],
+  "author": "Krishna Santosh Nidri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nidri/inr-words/issues"
+  },
+  "homepage": "https://github.com/nidri/inr-words#readme"
+}
