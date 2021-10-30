@@ -4,6 +4,7 @@
   "description": "Convert Indian currency from numbers to words",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/nidri/inr-words/issues"
   },
-  "homepage": "https://github.com/nidri/inr-words#readme"
+  "homepage": "https://github.com/nidri/inr-words#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
 }

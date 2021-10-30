@@ -1,3 +1,4 @@
+
 const TEN = 10;
 const ONE_HUNDRED = 100;
 const ONE_THOUSAND = 1000;
@@ -16,28 +17,60 @@ const TENTHS_LESS_THAN_HUNDRED = [
 ];
 
 let number = 0;
+let firstPart = 0;
+let secondPart = 0;
+let firstPartString = "";
+let secondPartString = "";
+let fullString = "";
 
 const inrInWords = function (inr) {
-    // TODO: Check if inr is not null and valid
-    // Validate inr
-    // TODO: Split into two (rupess and paise)
-    // TODO: Execute rupeesIntoWords for first part.
-    // TODO: Execute paiseIntoWords for second part.
-    // TODO: Concatenate both the parts.
-    const value = Math.floor(+inr / 100);
-    const rem = +inr % 100;
-    console.log(`${value} - ${rem}`);
+    
+    try {
+        if (!isFinite(inr)) {
+            throw new TypeError(
+                `Invalid number format: ${inr} (${typeof inr})`
+            );
+        }
+
+        // number = removeLeadingZeros(inr); // Convert from Octal to decimal
+        let stringInr = inr.toString();
+        let parts = stringInr.split('.');
+        firstPart = +parts[0];
+        firstPartString = `${getWords(firstPart)} rupees`;
+        if(parts.length > 1) {
+            // Set decimal part
+            secondPart = +parts[1];
+            secondPartString = `and ${getWords(secondPart)} paise`;
+        }
+        fullString = `${firstPartString} ${secondPartString}`;
+        console.log(`${inr} ${fullString}`);
+        return fullString;
+    }
+    catch (error) {
+        console.log(error.message);
+        return error.message;
+    }
+
+}
+
+function removeLeadingZeros(inr) {
+    // If octal, remove leading zeros
+    let str = inr.toString();
+    let str8 = inr.toString("8");
+    if (+str === inr) return inr;
+    return +str8;
 }
 
 // Testing
-inrInWords(667);
+inrInWords(4612113.);
 
-getWords(2409);
 
 function getWords(num) {
     num = +num;
+    let finalString = "";
     let crores = Math.floor(num / ONE_CRORE);
     let croresRemainder = num % ONE_CRORE;
+    let croresInWords = "";
 
     let tenLakhs = Math.floor(croresRemainder / ONE_LAKH);
     let tenLakhsRemainder = croresRemainder % ONE_LAKH;
@@ -56,36 +89,59 @@ function getWords(num) {
     let tensInWords = "";
     let onesInWords = "";
 
-    if(tenLakhs > 0) {
-        tenLakhsInWords = (tenLakhs < 20) ? LESS_THAN_TWENTY[tenLakhs] : TENTHS_LESS_THAN_HUNDRED[tenLakhs];
+    if (crores > 0) {
+        croresInWords = `${getWords(crores)} crores`;
+        finalString = `${croresInWords} `;
     }
 
-    if(tenThousands > 0) {
-        tenThousandsInWords = (tenThousands < 20) ? LESS_THAN_TWENTY[tenThousands] : TENTHS_LESS_THAN_HUNDRED[tenThousands];
-        tenThousandsInWords = `${tenThousandsInWords} thousand`; 
+    if (tenLakhs > 0) {
+        // tenLakhsInWords = (tenLakhs < 20) ? LESS_THAN_TWENTY[tenLakhs] : TENTHS_LESS_THAN_HUNDRED[tenLakhs];
+        tenLakhsInWords = `${getWords(tenLakhs)} lakhs`;
+        finalString = `${finalString}${tenLakhsInWords} `;
     }
 
-    if(hundreds > 0) {
+    if (tenThousands > 0) {
+        // tenThousandsInWords = (tenThousands < 20) ? LESS_THAN_TWENTY[tenThousands] : TENTHS_LESS_THAN_HUNDRED[tenThousands];
+        tenThousandsInWords = `${getWords(tenThousands)} thousand`;
+        finalString = `${finalString}${tenThousandsInWords} `;
+    }
+    if (hundreds > 0) {
         hundersInWords = LESS_THAN_TWENTY[hundreds];
-        hundersInWords = `${hundersInWords} hundred and`;
+        hundersInWords = `${hundersInWords} hundred`;
+        finalString = `${finalString}${hundersInWords} `;
     }
 
-    if(tens > 0) {
-        tensInWords = TENTHS_LESS_THAN_HUNDRED[tens];
+    if (hundredsRemainder < 20) {
+        // constuct string for less than 20 ( like thirteen, fifteen)
+        tensInWords = LESS_THAN_TWENTY[hundredsRemainder];
+        finalString = `${finalString}${tensInWords}`;
     }
 
-    if(tensRemainder > 0) {
-        onesInWords = LESS_THAN_TWENTY[tensRemainder];
+    else {
+        if (tens > 0) {
+            tensInWords = TENTHS_LESS_THAN_HUNDRED[tens];
+            finalString = `${finalString}${tensInWords} `;
+        }
+
+        if (tensRemainder > 0) {
+            onesInWords = LESS_THAN_TWENTY[tensRemainder];
+            finalString = `${finalString}${onesInWords}`;
+        }
     }
+
+
 
     // console.log(`${crores} crores ${croresRemainder} lakhs`);
     // console.log(`${tenLakhs} lakhs ${tenLakhsRemainder} thousands`);
     // console.log(`${tenThousandsInWords} thousands ${tenThousandsRemainder} hundreds`);
     // console.log(`${hundersInWords} hundred ${hundredsRemainder} tens`);
     // console.log(`${tensInWords} ${onesInWords}`);
-    console.log(`${crores} crores ${tenLakhsInWords} ${tenThousandsInWords} ${hundersInWords} ${tensInWords} ${onesInWords}`);
 
-    if (Math.floor(num / ONE_CRORE) > 0) {
-        console.log(``);
-    }
+    // console.log(`${crores} crores ${tenLakhsInWords} ${tenThousandsInWords} ${hundersInWords} ${tensInWords} ${onesInWords}`);
+
+    return finalString;
+}
+
+function isFinite(value) {
+    return !(typeof value !== 'number' || value !== value || value === Infinity || value === -Infinity);
 }
