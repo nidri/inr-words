@@ -4,7 +4,8 @@
   "description": "Convert Indian currency from numbers to words",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -12,12 +13,19 @@
   },
   "keywords": [
     "inr",
-    "currency"
+    "currency",
+    "indian currency",
+    "rupees",
+    "in words"
   ],
   "author": "Krishna Santosh Nidri",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nidri/inr-words/issues"
   },
-  "homepage": "https://github.com/nidri/inr-words#readme"
+  "homepage": "https://github.com/nidri/inr-words#readme",
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14"
+  }
 }
