@@ -44,7 +44,7 @@ const inrInWords = function (inr) {
         }
         fullString = `${firstPartString} ${secondPartString}`;
         // console.log(`${inr} ${fullString}`);
-        return fullString;
+        return fullString.trim();
     }
     catch (error) {
         console.log(error.message);
@@ -90,7 +90,7 @@ function getWords(num) {
     let onesInWords = "";
 
     if (crores > 0) {
-        croresInWords = `${getWords(crores)} crores`;
+        croresInWords = `${getWords(crores)} crore${crores > 1 ? 's' : ''}`;
         finalString = `${croresInWords} `;
     }
 
