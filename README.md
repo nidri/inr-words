@@ -20,4 +20,4 @@ console.log(inr(248745956.67));
 ````
 
 ## License
-ISC
+[ISC][LICENSE]
