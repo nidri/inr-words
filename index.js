@@ -43,7 +43,7 @@ const inrInWords = function (inr) {
             secondPartString = `and ${getWords(secondPart)} paise`;
         }
         fullString = `${firstPartString} ${secondPartString}`;
-        console.log(`${inr} ${fullString}`);
+        // console.log(`${inr} ${fullString}`);
         return fullString;
     }
     catch (error) {
@@ -62,7 +62,7 @@ function removeLeadingZeros(inr) {
 }
 
 // Testing
-inrInWords(4612113.);
+// inrInWords(process.argv[2]);
 
 
 function getWords(num) {
@@ -130,18 +130,11 @@ function getWords(num) {
     }
 
 
-
-    // console.log(`${crores} crores ${croresRemainder} lakhs`);
-    // console.log(`${tenLakhs} lakhs ${tenLakhsRemainder} thousands`);
-    // console.log(`${tenThousandsInWords} thousands ${tenThousandsRemainder} hundreds`);
-    // console.log(`${hundersInWords} hundred ${hundredsRemainder} tens`);
-    // console.log(`${tensInWords} ${onesInWords}`);
-
-    // console.log(`${crores} crores ${tenLakhsInWords} ${tenThousandsInWords} ${hundersInWords} ${tensInWords} ${onesInWords}`);
-
     return finalString;
 }
 
 function isFinite(value) {
     return !(typeof value !== 'number' || value !== value || value === Infinity || value === -Infinity);
 }
+
+module.exports = inrInWords;
