@@ -111,13 +111,17 @@ function getWords(num) {
         finalString = `${finalString}${hundersInWords} `;
     }
 
-    if (hundredsRemainder < 20) {
+    if (hundredsRemainder > 0 && hundredsRemainder < 20) {
         // constuct string for less than 20 ( like thirteen, fifteen)
         tensInWords = LESS_THAN_TWENTY[hundredsRemainder];
         finalString = `${finalString}${tensInWords}`;
     }
 
     else {
+        // If hundreds Remainder is 0, like 300.
+        if(hundredsRemainder === 0) {
+            finalString = finalString.trimEnd();
+        }
         if (tens > 0) {
             tensInWords = TENTHS_LESS_THAN_HUNDRED[tens];
             finalString = `${finalString}${tensInWords} `;
