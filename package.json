@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/nidri/inr-words#readme",
   "dependencies": {
-    "jest": "^27.3.1",
+    "jest": "^27.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.14"
