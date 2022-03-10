@@ -36,7 +36,7 @@ const inrInWords = function (inr) {
         let stringInr = inr.toString();
         let parts = stringInr.split('.');
         firstPart = +parts[0];
-        firstPartString = `${getWords(firstPart)} rupees`;
+        firstPartString = `${getWords(firstPart)} rupee(s)`;
         if(parts.length > 1) {
             // Set decimal part
             secondPart = +parts[1];
