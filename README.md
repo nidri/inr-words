@@ -3,6 +3,8 @@
 
 **Note**: `Octal` numbers are converted to decimal before converting to words.
 
+[Link to NPM Package](https://www.npmjs.com/package/inr-words)
+
 ## Install
 ```sh
 npm install inr-words
