@@ -1,6 +1,6 @@
 {
   "name": "inr-words",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert Indian currency from numbers to words",
   "main": "index.js",
   "scripts": {

@@ -67,6 +67,9 @@ function removeLeadingZeros(inr) {
 
 function getWords(num) {
     num = +num;
+    // If number is zero, just  return "zero"
+    if(!num || num === 0) return "zero";
+
     let finalString = "";
     let crores = Math.floor(num / ONE_CRORE);
     let croresRemainder = num % ONE_CRORE;
