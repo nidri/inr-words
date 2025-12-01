@@ -1,11 +1,12 @@
 {
   "name": "inr-words",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Convert Indian currency from numbers to words",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index",
-    "test": "jest"
+    "dev": "node --watch index.test.mjs",
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -25,9 +26,7 @@
   },
   "homepage": "https://github.com/nidri/inr-words#readme",
   "dependencies": {
-    "jest": "^27.3.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
   }
 }

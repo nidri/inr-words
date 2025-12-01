@@ -5,14 +5,16 @@
 
 [Link to NPM Package](https://www.npmjs.com/package/inr-words)
 
+> Note: version 2.0.0 and onwards, esm modules artifacts will be followed. For csm implementation, please follow lower versions.
+
 ## Install
-```sh
+```
 npm install inr-words
 ```
 
 ## Usage
 ````
-const inr = require('inr-words');
+import {inrInWords as inr} from './index.js';
 
 console.log(inr(3485)); 
 // Output: three thousand four hundred eighty five rupees
